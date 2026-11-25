@@ -10,15 +10,17 @@ import os
 from pathlib import Path
 
 USERNAME = "coral-badger-76"
+MAX_LEN = 30
 
 
 def main() -> None:
     out_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
     out_dir.mkdir(parents=True, exist_ok=True)
     text = USERNAME.strip()
-    assert 1 <= len(text) <= 30, f"username is {len(text)} characters"
+    assert 1 <= len(text) <= MAX_LEN, f"username is {len(text)} characters"
     assert text.strip(), "username must not be only whitespace"
     assert " " not in text, "username must be a single word"
+    assert "\n" not in text, "username must be a single line"
     (out_dir / "entry.txt").write_text(text, encoding="utf-8")
 
 
