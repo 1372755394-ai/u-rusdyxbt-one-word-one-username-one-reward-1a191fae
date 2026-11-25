@@ -11,6 +11,7 @@ from pathlib import Path
 
 USERNAME = "coral-badger-76"
 MAX_LEN = 30
+ENTRY_FILE = "entry.txt"
 
 
 def main() -> None:
@@ -21,7 +22,7 @@ def main() -> None:
     assert text.strip(), "username must not be only whitespace"
     assert " " not in text, "username must be a single word"
     assert "\n" not in text, "username must be a single line"
-    (out_dir / "entry.txt").write_text(text, encoding="utf-8")
+    (out_dir / ENTRY_FILE).write_text(text, encoding="utf-8")
 
 
 if __name__ == "__main__":
